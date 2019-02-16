@@ -1,0 +1,52 @@
+# Edit this file to introduce tasks to be run by cron. 
+#
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task.
+#
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').#
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+#
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+#
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+#
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+# m h dom mon dow  command 
+# System path for Shaun /usr/local/bin/perl /usr/local/cpanel/3rdparty/quickinstall/scripts/checkupdates.pl
+# ____________________MINUTE (0 - 59)
+# | ____________________HOUR (0 - 23)
+# | | ____________________DAY OF MONTH (1 - 31)
+# | | | ____________________MONTH (1 - 12)
+# | | | | ____________________DAY OF WEEK (0 - 6) (SUNDAY TO SUNDAY;
+# | | | | |                                           7 IS ALSO SUNDAY ON SOME SYSTEMS)
+# | | | | |
+# | | | | |
+# | | | | |
+# + + + + + COMMAND_TO_EXECUTE
+# PYTHON AUTO SCRIPT ALREADY IN USE DONT DELETE
+#0 0 * * * /usr/local/bin/perl /usr/local/cpanel/3rdparty/quickinstall/scripts/checkupdates.pl
+
+# THE WEBSITE DAILY VISITORS, REPORT
+SHELL="/usr/local/cpanel/bin/jailshell"
+59 5 * * * cat access-logs/yourdomain.com >> /hostgator/serverpath/cron_log/web_log.txt
+
+# WEEKLY COPY OF THE WEEKS VISITOS,  REPORT
+SHELL="/usr/local/cpanel/bin/jailshell"
+0 6 * * 6 cp hostgator/serverpath/cron_log/web_log.txt /home4/shaunlewiskf/cron_log/web_log_week.txt.$(date +%Y-%m-%d)
+
+# SSL DAILY VISITORS, REPORT
+SHELL="/usr/local/cpanel/bin/jailshell"
+59 5 * * * cat access-logs/yourdomain.com-ssl_log >> /hostgator/serverpath/cron_log/sweb_log.txt
+
+# SSL WEEKLY COPY THE WEEKS VISITORS, REPORT
+SHELL="/usr/local/cpanel/bin/jailshell"
+0 6 * * 6 cp hostgator/serverpath/cron_log/sweb_log.txt /hostgator/serverpath/cron_log/sweb_log_week.txt.$(date +%Y-%m-%d)
+
