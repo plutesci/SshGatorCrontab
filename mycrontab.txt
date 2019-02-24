@@ -36,17 +36,6 @@
 
 # THE WEBSITE DAILY VISITORS, REPORT
 SHELL="/usr/local/cpanel/bin/jailshell"
-59 5 * * * cat access-logs/yourdomain.com >> /hostgator/serverpath/cron_log/web_log.txt
+59 5 * * * cat /home/username/access-logs/yourdomain.com > /home/username/cron_log/$.(date +%Y-%m-%d)web_log.txt
 
-# WEEKLY COPY OF THE WEEKS VISITOS,  REPORT
-SHELL="/usr/local/cpanel/bin/jailshell"
-0 6 * * 6 cp hostgator/serverpath/cron_log/web_log.txt /home4/shaunlewiskf/cron_log/web_log_week.txt.$(date +%Y-%m-%d)
-
-# SSL DAILY VISITORS, REPORT
-SHELL="/usr/local/cpanel/bin/jailshell"
-59 5 * * * cat access-logs/yourdomain.com-ssl_log >> /hostgator/serverpath/cron_log/sweb_log.txt
-
-# SSL WEEKLY COPY THE WEEKS VISITORS, REPORT
-SHELL="/usr/local/cpanel/bin/jailshell"
-0 6 * * 6 cp hostgator/serverpath/cron_log/sweb_log.txt /hostgator/serverpath/cron_log/sweb_log_week.txt.$(date +%Y-%m-%d)
 
